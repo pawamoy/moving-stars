@@ -2,6 +2,8 @@
 
 :star: Copy your stars :star2: from one Git provider to another :stars:
 
+![screenshot](screenshot.png)
+
 Currently only support copying stars from GitHub to GitLab. Namespace and project name must be the same on GitHub and GitLab. Case is insensitive, though :+1:!
 
 ## Bash
@@ -39,6 +41,7 @@ microsoft/ghcrawler-cli
 github/VisualStudio
 Pawamoy/moving-stars
 this-repo/does-not-exist
+cryptsetup/cryptsetup
 ```
 
 ## Other options

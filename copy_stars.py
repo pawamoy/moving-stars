@@ -130,7 +130,7 @@ def main(args=None):
 
     else:
         with open(args.from_file) as stream:
-            github_star_list = [line.rstrip('\n') for line in stream.readlines()]
+            github_star_list = {line.rstrip('\n') for line in stream.readlines()} - {''}
         err(Style.RESET_ALL + Style.BRIGHT + 'Read a list of %d starred repositories' % len(github_star_list))
 
     if not args.no_pre_skip:
