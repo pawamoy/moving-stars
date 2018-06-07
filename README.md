@@ -5,7 +5,7 @@
 Currently only support copying stars from GitHub to GitLab. Namespace and project name must be the same on GitHub and GitLab. Case is insensitive, though :+1:!
 
 ## Bash
-Dependencies: `requests` (`pip install requests`)
+Dependencies: `requests` and `colorama` (`pip install requests colorama`)
 
 ```bash
 export GITHUB_TOKEN=<github_token>
