@@ -55,6 +55,18 @@ optional arguments:
   -h, --help            show this help message and exit
   -f FROM_FILE, --from-file FROM_FILE
                         Read star list from file.
+  -o OUTPUT_SOURCE_LIST, --output-source-list OUTPUT_SOURCE_LIST
+                        Output downloaded source list to file.
   --no-pre-skip         Don't download list from target to skip already
                         starred projects.
+```
+
+It can be useful to first download your starred list, update it manually
+(to correct unmatching namespaces / project names),
+and then star on GitLab with this list:
+
+```bash
+python copy_stars.py -o star_list
+# edit file manually...
+python copy_stars.py -f star_list
 ```

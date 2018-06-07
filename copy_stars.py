@@ -20,9 +20,13 @@ def err(*args, **kwargs):
 def get_parser():
     parser = argparse.ArgumentParser(
         description='Command line tool to copy GitHub stars to GitLab.')
-    parser.add_argument(
+    mxg = parser.add_mutually_exclusive_group(required=False)
+    mxg.add_argument(
         '-f', '--from-file', action='store', dest='from_file', default=None,
         help='Read star list from file.')
+    mxg.add_argument(
+        '-o', '--output-source-list', action='store', dest='output_source_list',
+        default=None, help='Output downloaded source list to file.')
     parser.add_argument('--no-pre-skip', action='store_true',
         dest='no_pre_skip', default=False,
         help="Don't download list from target to skip already starred projects.")
@@ -128,6 +132,12 @@ def main(args=None):
         github = GitHub(GITHUB_TOKEN)
         github_star_list = github.get_stars()
 
+        if args.output_source_list:
+            with open(args.output_source_list, 'w') as stream:
+                for star in github_star_list:
+                    stream.write(star + '\n')
+            return 0
+
     else:
         with open(args.from_file) as stream:
             github_star_list = {line.rstrip('\n') for line in stream.readlines()} - {''}
@@ -159,6 +169,11 @@ def main(args=None):
     err('Not found: %d' % report['not_found'])
     err('Errors:    %d' % report['error'])
 
+    return 0
+
 
 if __name__ == '__main__':
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except KeyboardInterrupt:
+        sys.exit(130)
