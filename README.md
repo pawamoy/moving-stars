@@ -11,7 +11,7 @@ Dependencies: `requests` (`pip install requests`)
 export GITHUB_TOKEN=<github_token>
 export GITLAB_TOKEN=<gitlab_token>
 
-python copy_stars.py  # [-f INPUT_FILE]
+python copy_stars.py
 ```
 
 ## Docker
@@ -39,4 +39,19 @@ microsoft/ghcrawler-cli
 github/VisualStudio
 Pawamoy/moving-stars
 this-repo/does-not-exist
+```
+
+## Other options
+```console
+$ python copy_stars.py -h
+usage: copy_stars.py [-h] [-f FROM_FILE] [--no-pre-skip]
+
+Command line tool to copy GitHub stars to GitLab.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FROM_FILE, --from-file FROM_FILE
+                        Read star list from file.
+  --no-pre-skip         Don't download list from target to skip already
+                        starred projects.
 ```
