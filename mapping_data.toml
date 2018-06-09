@@ -16,7 +16,7 @@ data = [
   {"github.com" = "shellm-org/preload", "gitlab.com" = "shellm/preload"},
   {"github.com" = "shellm-org/project", "gitlab.com" = "shellm/project"},
   {"github.com" = "shellm-org/require", "gitlab.com" = "shellm/require"},
-  {"github.com" = "shellm-org/shellman", "gitlab.com" = "shellm/shellman"},
   {"github.com" = "shellm-org/shellm", "gitlab.com" = "shellm/shellm"},
+  {"github.com" = "shellm-org/shellman", "gitlab.com" = "shellm/shellman"},
   {"github.com" = "shenv/shenv.github.io", "gitlab.com" = "shenv/shen.gitlab.io"},
 ]

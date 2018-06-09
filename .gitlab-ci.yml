@@ -2,7 +2,9 @@ stages:
   - test
 
 mapping-data-is-sorted:
-  image: alpine:latest
+  image: ubuntu:latest
   stage: test
+  variables:
+    LANG: en_US.UTF-8
   script:
-    - diff <(cat mapping_data.toml) <(echo data = [; sort -u mapping_data.toml | tail -n+3; echo ])
+    - bash -c 'diff <(grep \{ mapping_data.toml) <(sort -u mapping_data.toml | grep \{)'
