@@ -1,7 +1,7 @@
-import json
+import pytoml
 
-with open('mapping_data.json') as stream:
-    data_array = json.load(stream)
+with open('mapping_data.toml') as stream:
+    data_array = pytoml.load(stream).get('data', [])
 
 mapping = {}
 

@@ -1,0 +1,8 @@
+stages:
+  - test
+
+mapping-data-is-sorted:
+  image: alpine:latest
+  stage: test
+  script:
+    - diff <(cat mapping_data.toml) <(echo data = [; sort -u mapping_data.toml | tail -n+3; echo ])
