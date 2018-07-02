@@ -1,7 +1,6 @@
 FROM python:3.6-alpine
 
-RUN pip install requests colorama
+RUN pip install moving-stars
 
-COPY copy_stars.py /run.py
+CMD ["move-stars"]
 
-CMD ["python", "/run.py"]

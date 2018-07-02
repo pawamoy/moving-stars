@@ -4,16 +4,18 @@
 
 ![screenshot](screenshot.png)
 
-Currently only support copying stars from GitHub to GitLab. Namespace and project name must be the same on GitHub and GitLab. Case is insensitive, though :+1:!
+Currently only support copying stars from GitHub to GitLab.
+Namespace and project name must be the same on GitHub and GitLab.
+Case is insensitive, though :+1:!
 
 ## Bash
-Dependencies: `requests` and `colorama` (`pip install requests colorama`)
-
 ```bash
+pip install moving-stars
+
 export GITHUB_TOKEN=<github_token>
 export GITLAB_TOKEN=<gitlab_token>
 
-python copy_stars.py
+move-stars
 ```
 
 ## Docker
@@ -46,7 +48,7 @@ cryptsetup/cryptsetup
 
 ## Other options
 ```console
-$ python copy_stars.py -h
+$ move-stars -h
 usage: copy_stars.py [-h] [-f FROM_FILE] [--no-pre-skip]
 
 Command line tool to copy GitHub stars to GitLab.
@@ -66,7 +68,7 @@ It can be useful to first download your starred list, update it manually
 and then star on GitLab with this list:
 
 ```bash
-python copy_stars.py -o star_list
+move-stars -o star_list
 # edit file manually...
-python copy_stars.py -f star_list
+move-stars -f star_list
 ```
