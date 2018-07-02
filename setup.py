@@ -14,7 +14,7 @@ setup(
     license='ISC',
     description='Copy the stars you gave on different Git services.',
     author='Timothée Mazzucotelli',
-    author_email='timothee.mazzucotelli@protonmail.com',
+    author_email='pawamoy@pm.me',
     url='https://gitlab.com/pawamoy/moving-stars',
     packages=find_packages('src'),
     package_dir={'': 'src'},
@@ -38,13 +38,8 @@ setup(
         'github', 'gitlab', '#movingtogitlab', 'stars', 'git',
     ],
     install_requires=[
-        'requests', 'colorama'
+        'requests', 'colorama', 'pytoml'
     ],
-    extras_require={
-        # eg:
-        #   'rst': ['docutils>=0.11'],
-        #   ':python_version=="2.6"': ['argparse'],
-    },
     entry_points={
         'console_scripts': [
             'move-stars = moving_stars.cli:main',
