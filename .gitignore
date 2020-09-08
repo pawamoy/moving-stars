@@ -1,7 +1,13 @@
-*.pyc
-__pycache__/
 .idea/
-build/
+__pycache__/
+*.py[cod]
 dist/
 *.egg-info/
-
+build/
+.coverage*
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+site/
+poetry.lock
+.venv/

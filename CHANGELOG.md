@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<!-- insertion marker -->
 ## [0.1.0](https://gitlab.com/pawamoy/moving-stars/tags/0.1.0) ([compare](https://gitlab.com/pawamoy/moving-stars/compare/2c42c9414bc9e830bb10ab131610995e5c2621d0...0.1.0)) - 2018-07-02
 
 ### Added
@@ -28,5 +29,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update README ([1065f7b](https://gitlab.com/pawamoy/moving-stars/commit/1065f7b53f8fa25e6addb6bce6cb03818a700683)).
 - Update setup.py ([70fb8d1](https://gitlab.com/pawamoy/moving-stars/commit/70fb8d1658dbc9c2a430f4cfd82401686184a435)).
 - Use TOML instead of JSON ([37e7ced](https://gitlab.com/pawamoy/moving-stars/commit/37e7ced97edaa1d5ee4295d94bddf153db350b79)).
-
-

@@ -1,0 +1,38 @@
+site_name: "Moving Stars"
+site_description: "Star on GitLab.com the same repos your starred on GitHub.com!"
+site_url: "https://pawamoy.github.io/moving-stars"
+repo_url: "https://github.com/pawamoy/moving-stars"
+repo_name: "pawamoy/moving-stars"
+
+nav:
+  - Overview: index.md
+  - Reference:
+    - cli.py: reference/cli.md
+    - clients.py: reference/clients.md
+    - mapping.py: reference/mapping.md
+    - utils.py: reference/utils.md
+  - Contributing: contributing.md
+  - Code of Conduct: code_of_conduct.md
+  - Changelog: changelog.md
+  - Credits: credits.md
+
+theme:
+  name: material
+
+extra_css:
+  - css/mkdocstrings.css
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.emoji
+  - toc:
+      permalink: "¤"
+
+plugins:
+  - search
+  - mkdocstrings:
+      watch:
+        - src/moving_stars

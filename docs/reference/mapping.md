@@ -1,0 +1,1 @@
+::: moving_stars.mapping

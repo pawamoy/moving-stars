@@ -1,33 +1,77 @@
 # Moving Stars
 
-:star: Copy your stars :star2: from one Git provider to another :stars:
+[![ci](https://github.com/pawamoy/moving-stars/workflows/ci/badge.svg)](https://github.com/pawamoy/moving-stars/actions?query=workflow%3Aci)
+[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pawamoy.github.io/moving-stars/)
+[![pypi version](https://img.shields.io/pypi/v/moving-stars.svg)](https://pypi.org/project/moving-stars/)
+
+:star: Star on GitLab.com the same repos your starred on GitHub.com! :stars:
 
 ![screenshot](screenshot.png)
 
-Currently only support copying stars from GitHub to GitLab.
 Namespace and project name must be the same on GitHub and GitLab.
-Case is insensitive, though :+1:!
+Case is insensitive though :+1:!
 
-## Bash
+## Requirements
+
+Moving Stars requires Python 3.6 or above.
+
+<details>
+<summary>To install Python 3.6, I recommend using <a href="https://github.com/pyenv/pyenv"><code>pyenv</code></a>.</summary>
+
 ```bash
-pip install moving-stars
+# install pyenv
+git clone https://github.com/pyenv/pyenv ~/.pyenv
 
+# setup pyenv (you should also put these three lines in .bashrc or similar)
+export PATH="${HOME}/.pyenv/bin:${PATH}"
+export PYENV_ROOT="${HOME}/.pyenv"
+eval "$(pyenv init -)"
+
+# install Python 3.6
+pyenv install 3.6.8
+
+# make it available globally
+pyenv global system 3.6.8
+```
+</details>
+
+## Installation
+
+With `pip`:
+```bash
+python3.6 -m pip install moving-stars
+```
+
+With [`pipx`](https://github.com/pipxproject/pipx):
+```bash
+python3.6 -m pip install --user pipx
+
+pipx install --python python3.6 moving-stars
+```
+
+## Usage
+
+### Bash
+```bash
 export GITHUB_TOKEN=<github_token>
 export GITLAB_TOKEN=<gitlab_token>
 
-move-stars
+moving-stars
 ```
 
-## Docker
+### Docker
+
 ```bash
 docker run -e GITHUB_TOKEN=<github_token> -e GITLAB_TOKEN=<gitlab_token> --rm pawamoy/moving-stars
 ```
 
-## Tokens
+### Tokens
+
 - [Create a new GitHub token](https://github.com/settings/tokens/new) with `read:user` scope.
 - [Create a new GitLab token](https://gitlab.com/profile/personal_access_tokens) with `api` scope.
 
-## Input file
+### Input file
+
 A file containing the list of starred repositories that you want to copy on GitLab.
 The format of the input file is very simple.
 
@@ -46,10 +90,11 @@ this-repo/does-not-exist
 cryptsetup/cryptsetup
 ```
 
-## Other options
+### Other options
+
 ```console
-$ move-stars -h
-usage: copy_stars.py [-h] [-f FROM_FILE] [--no-pre-skip]
+$ moving-stars -h
+usage: moving-stars [-h] [-f FROM_FILE] [--no-pre-skip]
 
 Command line tool to copy GitHub stars to GitLab.
 
@@ -68,7 +113,7 @@ It can be useful to first download your starred list, update it manually
 and then star on GitLab with this list:
 
 ```bash
-move-stars -o star_list
+moving-stars -o star_list
 # edit file manually...
-move-stars -f star_list
+moving-stars -f star_list
 ```
