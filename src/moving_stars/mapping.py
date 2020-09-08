@@ -5,7 +5,7 @@ import requests
 
 
 def get_mapping():
-    response = requests.get('https://gitlab.com/pawamoy/foss-map-data/raw/master/data.toml').text
+    response = requests.get("https://gitlab.com/pawamoy/foss-map-data/raw/master/data.toml").text
     data_array = pytoml.loads(response).get("data", [])
 
     mapping = {}

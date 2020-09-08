@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import requests
-
 from colorama import Fore, Style
 
-from .utils import err
 from .mapping import get_mapping
+from .utils import err
 
 mapping = get_mapping()
 
@@ -34,9 +33,7 @@ class Provider(object):
 
     def get_stars(self):
         star_list, page = [], 1
-        err(
-            Style.RESET_ALL + "Downloading star list from %s: page " % self.name, end=""
-        )
+        err(Style.RESET_ALL + "Downloading star list from %s: page " % self.name, end="")
         while True:
             err(page, end="", flush=True)
             data = self.get(self.starred_request + "per_page=100&page=" + str(page))
@@ -47,11 +44,7 @@ class Provider(object):
             page += 1
             err(",", end="")
 
-        err(
-            Style.RESET_ALL
-            + Style.BRIGHT
-            + "Downloaded a list of %d starred repositories" % len(star_list)
-        )
+        err(Style.RESET_ALL + Style.BRIGHT + "Downloaded a list of %d starred repositories" % len(star_list))
         return star_list
 
     def format_star_id(self, star):
@@ -67,19 +60,10 @@ class Provider(object):
             response = self.post(self.star_request % self.format_star_id(star))
 
             if response.status_code == 201:
-                err(
-                    Style.RESET_ALL
-                    + Style.BRIGHT
-                    + Fore.GREEN
-                    + "Found and starred %s on %s!" % (star, self.name)
-                )
+                err(Style.RESET_ALL + Style.BRIGHT + Fore.GREEN + "Found and starred %s on %s!" % (star, self.name))
                 count["success"] += 1
             elif response.status_code == 304:
-                err(
-                    Style.RESET_ALL
-                    + Fore.YELLOW
-                    + "Found %s on %s, but it was already starred" % (star, self.name)
-                )
+                err(Style.RESET_ALL + Fore.YELLOW + "Found %s on %s, but it was already starred" % (star, self.name))
                 count["skip"] += 1
             elif response.status_code == 404:
                 err(Style.RESET_ALL + "Not found on %s: %s" % (self.name, star))
@@ -88,8 +72,7 @@ class Provider(object):
                 err(
                     Style.RESET_ALL
                     + Fore.RED
-                    + "Error: got HTTP %d while trying to star %s on %s"
-                    % (response.status_code, star, self.name)
+                    + "Error: got HTTP %d while trying to star %s on %s" % (response.status_code, star, self.name)
                 )
                 count["error"] += 1
         return count

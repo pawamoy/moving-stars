@@ -15,7 +15,7 @@ import argparse
 import os
 from typing import List, Optional
 
-from colorama import init, Fore, Style
+from colorama import Fore, Style, init
 
 from moving_stars.clients import GitHub, GitLab
 from moving_stars.mapping import get_mapping
@@ -35,8 +35,7 @@ def get_parser() -> argparse.ArgumentParser:
         An argparse parser.
     """
     parser = argparse.ArgumentParser(
-        prog="moving-stars",
-        description="Command line tool to copy GitHub stars to GitLab."
+        prog="moving-stars", description="Command line tool to copy GitHub stars to GitLab."
     )
     mxg = parser.add_mutually_exclusive_group(required=False)
     mxg.add_argument(
@@ -97,11 +96,7 @@ def main(args: Optional[List[str]] = None) -> int:
     else:
         with open(args.from_file) as stream:
             github_star_list = {line.rstrip("\n") for line in stream.readlines()} - {""}
-        err(
-            Style.RESET_ALL
-            + Style.BRIGHT
-            + "Read a list of %d starred repositories" % len(github_star_list)
-        )
+        err(Style.RESET_ALL + Style.BRIGHT + "Read a list of %d starred repositories" % len(github_star_list))
 
     if not GITLAB_TOKEN:
         err(Style.RESET_ALL + "GITLAB_TOKEN environment variable must be set")
@@ -119,12 +114,7 @@ def main(args: Optional[List[str]] = None) -> int:
 
         skipped = len(github_set) - len(stars_to_sync)
         if skipped > 0:
-            err(
-                Style.RESET_ALL
-                + Fore.YELLOW
-                + "Skipping %d repositories that are already starred on GitLab"
-                % skipped
-            )
+            err(Style.RESET_ALL + Fore.YELLOW + "Skipping %d repositories that are already starred on GitLab" % skipped)
 
     else:
         skipped = 0
@@ -134,9 +124,9 @@ def main(args: Optional[List[str]] = None) -> int:
     mapping = get_mapping()
     mapped_stars_to_sync = list()
     for star in stars_to_sync:
-        github_star = 'github.com:' + star
+        github_star = "github.com:" + star
         if github_star in mapping:
-            mapped_stars_to_sync.append(mapping[github_star]['gitlab.com'])
+            mapped_stars_to_sync.append(mapping[github_star]["gitlab.com"])
         else:
             mapped_stars_to_sync.append(star)
     mapped_stars_to_sync = list(sorted(mapped_stars_to_sync))
